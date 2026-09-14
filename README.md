@@ -4,14 +4,11 @@
 
 Multi-tenant **specialty matching** SaaS demo: patients get ranked providers by specialty preference, location, subscription/access tier, and capacity — with explainable score breakdowns. Providers and tenant admins see the other side of the funnel.
 
-> **Honesty first**
->
-> - Educational demo only. **Synthetic** seed data.
-> - **Independent clean-room.** Not affiliated with SpeciaList Health, Precision Cardiology, Syncura, or any prior employer codebases.
-> - **No HIPAA certification claims.** No fake “10k users,” clinical outcomes, or production healthcare deployments.
-> - Demo JWT auth (one-click personas). Audit logs are metadata / ids only — never clinical content or real PHI.
+## Scope & honesty
 
-See [SPEC.md](./SPEC.md) for formula, scope, and architecture.
+Clean-room educational implementation using synthetic data. Demo JWT auth (one-click personas). Audit logs are metadata / ids only — never clinical content or real PHI. Not a production healthcare product.
+
+See [`PROVENANCE.md`](PROVENANCE.md) for affiliation notes. Full formula and architecture: [`SPEC.md`](SPEC.md).
 
 ---
 
@@ -41,7 +38,7 @@ Open **http://localhost:5173**.
 
 ### 1. Patient match (~40s)
 
-1. Read the disclaimer banner (synthetic / educational / not SpeciaList).
+1. Read the disclaimer banner (synthetic / educational).
 2. On **Demo login**, click **Continue as Patient** (Ava Chen).
 3. Land on **Find matches** — preferred specialties and city pre-filled from seed.
 4. Click **Run match**. Show the ranked list with **overall score** and breakdown chips (specialty / location / tier / availability).
