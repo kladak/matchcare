@@ -67,3 +67,30 @@ def test_admin_tenant_and_audit(client):
 def test_admin_forbidden_for_patient(client):
     patient = auth_header(client, "patient@demo.matchcare.local")
     assert client.get("/admin/tenant", headers=patient).status_code == 403
+
+
+def test_cross_tenant_request_is_not_visible_or_patchable(client):
+    bayview_patient = auth_header(client, "patient@demo.matchcare.local")
+    providers = client.get("/providers", headers=bayview_patient).json()
+    target = next(p for p in providers if "Okonkwo" in p["display_name"])
+
+    created = client.post(
+        "/match-requests",
+        headers=bayview_patient,
+        json={"provider_user_id": target["user_id"], "notes": "Tenant isolation test"},
+    )
+    assert created.status_code == 201, created.text
+    request_id = created.json()["id"]
+
+    summit_patient = auth_header(client, "patient@summit.matchcare.local")
+    summit_requests = client.get("/match-requests", headers=summit_patient)
+    assert summit_requests.status_code == 200
+    assert all(item["id"] != request_id for item in summit_requests.json())
+
+    patched = client.patch(
+        f"/match-requests/{request_id}",
+        headers=summit_patient,
+        json={"status": "declined"},
+    )
+    assert patched.status_code == 404
+    assert patched.json()["detail"] == "Match request not found"

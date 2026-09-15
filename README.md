@@ -84,8 +84,8 @@ against the database on each request (`app/services/auth.py`). The scoping is ap
 `app/routers/providers.py`, `match.py`, `match_requests.py` and `admin.py`. An admin of
 one tenant cannot read or mutate another tenant's rows even by guessing ids. Passwords are
 bcrypt-hashed; role gating is a FastAPI dependency (`require_role`), covered by
-`tests/test_requests_admin.py::test_admin_forbidden_for_patient`. A cross-tenant test for
-`match_request` ids is still to be written.
+`tests/test_requests_admin.py::test_admin_forbidden_for_patient`. Cross-tenant request
+access is covered by `tests/test_requests_admin.py::test_cross_tenant_request_is_not_visible_or_patchable`.
 
 Audit middleware (`app/middleware/audit.py`) records method, path, status and actor id per
 request. Bodies are excluded from the row.
