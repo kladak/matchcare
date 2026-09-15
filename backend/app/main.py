@@ -27,8 +27,7 @@ async def lifespan(_app: FastAPI):
 app = FastAPI(
     title=settings.app_name,
     description=(
-        "Clean-room multi-tenant specialty matching demo (portfolio). "
-        "Not affiliated with SpeciaList Health. Synthetic data only — no HIPAA claims."
+        "Multi-tenant specialty matching over a seeded provider directory."
     ),
     version="0.1.0",
     lifespan=lifespan,
@@ -58,5 +57,5 @@ def root():
         "service": "matchcare",
         "docs": "/docs",
         "health": "/health",
-        "disclaimer": "Educational portfolio demo — synthetic data only.",
+        "seed_data": True,
     }

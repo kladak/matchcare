@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api, ApiError } from './api'
-import { Disclaimer } from './components/Disclaimer'
+import { DataNote } from './components/DataNote'
 import { LoadingState } from './components/States'
 import { AdminPage } from './pages/AdminPage'
 import { LoginPage } from './pages/LoginPage'
@@ -108,7 +108,7 @@ export default function App() {
         </div>
       </header>
 
-      <Disclaimer />
+      <DataNote />
 
       <nav className="nav" aria-label="Primary">
         {tabs
@@ -136,7 +136,7 @@ export default function App() {
 
       {toast ? <div className="toast">{toast}</div> : null}
       <p className="footer-note">
-        Synthetic educational demo · formula in SPEC.md · not a medical device
+        Seeded demo data. Matching formula in SPEC.md.
       </p>
     </div>
   )

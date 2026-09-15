@@ -1,1 +1,1 @@
-"""MatchCare API — clean-room specialty matching demo."""
+"""MatchCare API: multi-tenant specialty matching."""

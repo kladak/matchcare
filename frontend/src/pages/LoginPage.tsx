@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api, ApiError } from '../api'
-import { Disclaimer } from '../components/Disclaimer'
+import { DataNote } from '../components/DataNote'
 import { EmptyState, ErrorState, LoadingState } from '../components/States'
 import type { Persona } from '../types'
 
@@ -48,11 +48,11 @@ export function LoginPage({ onLogin }: { onLogin: (token: string) => Promise<voi
           <div className="brand-mark">MC</div>
           <div>
             <h1>MatchCare</h1>
-            <p>Multi-tenant specialty matching · portfolio demo</p>
+            <p>Multi-tenant specialty matching</p>
           </div>
         </div>
       </header>
-      <Disclaimer />
+      <DataNote />
       <section className="card">
         <h2 style={{ marginTop: 0 }}>Demo login</h2>
         <p className="muted">
@@ -108,7 +108,7 @@ export function LoginPage({ onLogin }: { onLogin: (token: string) => Promise<voi
           </>
         ) : null}
       </section>
-      <p className="footer-note">Karim Ladak · clean-room educational demo</p>
+      <p className="footer-note">Seeded demo personas</p>
     </div>
   )
 }

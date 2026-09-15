@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.models import Organization, PatientProfile, ProviderProfile, User
 DEMO_PASSWORD = "demo1234"
-# Precomputed bcrypt (rounds=4) for demo1234 — keeps seed/tests fast.
+# Precomputed bcrypt (rounds=4) for demo1234, which keeps seeding and tests fast.
 _DEMO_HASH = "$2b$04$IhgBqn3kdVyhZW7gvRSNE.EohRIHjeUvePzBB6B05lgOlBhN.NqsW"
 SPECIALTIES = [
     "Cardiology",
@@ -118,7 +118,7 @@ def seed_if_empty(db: Session) -> None:
                 weekly_capacity=cap,
                 remaining_slots=rem,
                 accepted_tiers=_csv(tiers),
-                bio=f"Synthetic {specs[0].lower()} specialist — educational seed only.",
+                bio=f"Generated {specs[0].lower()} specialist profile.",
             )
         )
 

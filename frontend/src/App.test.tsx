@@ -25,10 +25,10 @@ vi.mock('./api', () => ({
 }))
 
 describe('App login shell', () => {
-  it('renders demo login and disclaimer', async () => {
+  it('renders the demo login shell', async () => {
     render(<App />)
     expect(await screen.findByText(/Demo login/i)).toBeInTheDocument()
-    expect(screen.getByText(/Educational portfolio demo/i)).toBeInTheDocument()
+    expect(screen.getByText(/generated seed data/i)).toBeInTheDocument()
     expect(await screen.findByText(/Continue as Ava Chen/i)).toBeInTheDocument()
   })
 })

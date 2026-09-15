@@ -72,7 +72,7 @@ export function AdminPage({ token }: { token: string }) {
 
       <section className="card" style={{ marginTop: '1rem' }}>
         <h3 style={{ marginTop: 0 }}>Audit log</h3>
-        <p className="muted">Metadata only — method, path, status, actor id. No request bodies or PHI.</p>
+        <p className="muted">Metadata only: method, path, status, actor id. No request bodies.</p>
         {logs === null ? <LoadingState /> : null}
         {logs && logs.length === 0 ? <EmptyState title="No logs yet" detail="Hit a few authenticated routes." /> : null}
         {logs && logs.length > 0 ? (
@@ -94,7 +94,7 @@ export function AdminPage({ token }: { token: string }) {
                   <td>{l.method}</td>
                   <td>{l.path}</td>
                   <td>{l.status_code}</td>
-                  <td>{l.actor_user_id ?? '—'}</td>
+                  <td>{l.actor_user_id ?? '–'}</td>
                   <td>{l.duration_ms}</td>
                 </tr>
               ))}

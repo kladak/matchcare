@@ -60,7 +60,7 @@ def test_admin_tenant_and_audit(client):
     client.get("/providers", headers=admin)
     logs = client.get("/audit/logs", headers=admin)
     assert logs.status_code == 200
-    # may be empty if middleware uses different session — still 200
+    # May be empty if the middleware used a different session; still expect 200.
     assert isinstance(logs.json(), list)
 
 
